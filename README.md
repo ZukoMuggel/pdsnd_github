@@ -14,4 +14,4 @@ Include the files used
 
 ### Credits
 It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
-
+https://docs.google.com/document/d/1ueW_kKE3hJp7qqkXKbvvG5XxBe17WlQ-AMNKLzfrkXI/edit?usp=sharing
