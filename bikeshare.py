@@ -21,18 +21,18 @@ def get_filters():
     month = ''
     day = ''
     while True:
-        city = input("which city u would like to know? Chicago, New York,or Washington? ").lower()
+        city = input("which city u would like to know? Chicago, New York,or Washington? ").lower().title()
         #python bikeshare.py
-        if city.title() == 'Chicago':
+        if city == 'Chicago':
             print("okay "+city)
             break
-        if city.title() == 'New York':
+        if city == 'New York':
             print("okay " + city)
             break
-        if city.title() == 'Washington':
+        if city == 'Washington':
             print("okay "+city)
             break
-        
+
 
     # AsK them if they want filter
     while True:
@@ -44,7 +44,7 @@ def get_filters():
                     print("okay")
                     break
             return city, month, 'all'
-            
+
         if filter == 'day':
             while True:
                 day = input("Which day? Please typ your response as Integer(e.g., 1= Sunday)")
@@ -52,36 +52,36 @@ def get_filters():
                     print("okay")
                     break
             return city, 'all', day
-            
+
         if filter == 'both':
             while True:
                 month = input("which month? January, February, March, April, May, or June?")
                 if month == 'January' or 'February' or 'March' or 'April' or 'May' or 'June':
                     print("okay")
                     break
-                
+
             while True:
                 day = int(input("Which day? Please typ your response as Integer(e.g., 1= Sunday)"))
                 if int(day) >= 1 or day <= 7:
                     print("okay")
                     break
             return city, month, day
-        
+
         if filter == 'not at all':
             return city, 'all', 'all'
-            
-                     
-          #python bikeshare.py      
-            
-            
-    
-    # TO DO: get user input for month (all, january, february, ... , june)
-    
 
-    
+
+          #python bikeshare.py
+
+
+
+    # TO DO: get user input for month (all, january, february, ... , june)
+
+
+
 
     # TO DO: get user input for day of week (all, monday, tuesday, ... sunday)
-    
+
 
 
     print('-'*40)
@@ -106,10 +106,10 @@ def load_data(city, month, day):
 
     df = pd.read_csv(filename)
     df['Start Time'] = pd.to_datetime(df['Start Time'])
-    
+
     if month == 'all' and day == 'all':
         return df
-        
+
     if month != 'all':
         m = 0
         if month == 'January':
@@ -119,14 +119,14 @@ def load_data(city, month, day):
         if month == 'March':
             m = 3
         if month == 'April':
-            m = 4    
+            m = 4
         if month == 'May':
             m = 5
         if month == 'June':
-            m = 6    
+            m = 6
         print(str(m))
-        
-        df = df[df['Start Time'].dt.month == m] 
+
+        df = df[df['Start Time'].dt.month == m]
         df.info()
     if day != 'all':
         df = df[df['Start Time'].dt.day == int(day)]
@@ -173,7 +173,7 @@ def station_stats(df):
     print('\nthe most commonly used start station:{}'.format(start_satation))
 
     # TO DO: display most commonly used end station
-    
+
     end_satation = df['End Station'].mode()[0]
     print('\nthe most commonly used end station:{}'.format(end_satation))
 
@@ -204,7 +204,7 @@ def trip_duration_stats(df):
 
     mean = df['Trip Duration'].mean()
     print('\nthe mean travel time:{}'.format(str(mean)))
-    
+
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
@@ -225,13 +225,13 @@ def user_stats(df):
             print('user types:{},count:{}\n'.format(j,user_dict.get(j)))
     except:
         print("no such User Type")
-        
+
     # TO DO: Display counts of gender
     try:
         gender_dict = df.groupby('Gender').size().to_dict()
         gender_typ = []
         for i in gender_dict:
-            gender_typ.append(i)      
+            gender_typ.append(i)
         for j in gender_typ:
             print('gender types:{},count:{}\n'.format(j,gender_dict.get(j)))
     except:
@@ -243,14 +243,14 @@ def user_stats(df):
         earliest = df['Birth Year'].min()
 
         print('\nthe earliest year of birth:{}'.format(earliest))
-    
+
 
         most_recent = df['Birth Year'].max()
         print('\nthe most_recent year of birth:{}'.format(most_recent))
-    
+
         most_common = df['Birth Year'].mode()[0]
         print('\nthe most_recent year of birth:{}'.format(most_common))
-    
+
     except:
         print("sry,no birth year's info")
 
@@ -259,13 +259,13 @@ def user_stats(df):
 
 def display_data(df):
     view_data = input('\nWould you like to view 5 rows of individual trip data? Enter yes or no\n')
-                      
+
     start_loc = 0
     while (view_data == 'yes'):
         print(df.iloc[start_loc:start_loc+5])
         start_loc += 5
         view_data = input("Do you wish to continue?: yes/no").lower()
-    
+
 def main():
     while True:
         city, month, day = get_filters()
@@ -280,7 +280,7 @@ def main():
         restart = input('\nWould you like to restart? Enter yes or no.\n')
         if restart.lower() != 'yes':
             break
-        
+
 
 
 if __name__ == "__main__":
