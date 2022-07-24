@@ -14,4 +14,4 @@ You need to run bikeshare.py on  Terminal or Jupyter-notebook.
 
 
 ### Credits
-I learned python in [Undacity](www.udacity.com),check it out :+1:
+I learned python in [Undacity](https://www.udacity.com/),check it out :+1:
