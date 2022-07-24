@@ -1,6 +1,7 @@
 import time
 import pandas as pd
 import numpy as np
+from tabulate import tabulate
 
 CITY_DATA = { 'chicago': 'chicago.csv',
               'new york city': 'new_york_city.csv',
@@ -262,8 +263,8 @@ def display_data(df):
 
     start_loc = 0
     while (view_data == 'yes'):
-        print(df.iloc[start_loc:start_loc+5])
-        start_loc += 5
+        print(tabulate(df_default.iloc[np.arange(0+i,5+i)], headers ="keys"))
+        i+=5
         view_data = input("Do you wish to continue?: yes/no").lower()
 
 def main():
