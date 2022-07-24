@@ -46,15 +46,15 @@ def get_filters():
     month = ''
     day = ''
     while True:
-        city = input("which city u would like to know? Chicago, New York,or Washington? ").lower()
+        city = input("which city u would like to know? Chicago, New York,or Washington? ").lower().title()
         #python bikeshare.py
-        if city.title() == 'Chicago':
+        if city == 'Chicago':
             print("okay "+city)
             break
-        if city.title() == 'New York':
+        if city == 'New York':
             print("okay " + city)
             break
-        if city.title() == 'Washington':
+        if city == 'Washington':
             print("okay "+city)
             break
 
